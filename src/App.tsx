@@ -6,6 +6,7 @@ import AgencyProjects from './pages/AgencyProjects';
 import AgencySettings from './pages/AgencySettings';
 import DevInfrastructure from './pages/DevInfrastructure';
 import DevRepositories from './pages/DevRepositories';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         We will manage layout differences via props or separate layouts later.
       */}
       <Route path="/" element={<ClientDashboard />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/features" element={<ClientFeatures />} />
       <Route path="/contracts" element={<ClientContracts />} />
       <Route path="/agency/projects" element={<AgencyProjects />} />
