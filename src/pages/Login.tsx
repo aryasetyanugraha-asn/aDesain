@@ -5,8 +5,9 @@ import {
   signInWithPhoneNumber,
   type ConfirmationResult
 } from 'firebase/auth';
-import { auth } from '../lib/firebase';
-import { useNavigate } from 'react-router-dom';
+import { auth, db } from '../lib/firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { useNavigate, Link } from 'react-router-dom';
 
 declare global {
   interface Window {
@@ -34,6 +35,28 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const redirectBasedOnRole = async (uid: string) => {
+    try {
+      const userDoc = await getDoc(doc(db, 'users', uid));
+      if (userDoc.exists()) {
+        const userRole = userDoc.data().role;
+        if (userRole === 'Client') {
+          navigate('/client-dashboard');
+        } else if (userRole === 'Agency') {
+          navigate('/agency-projects');
+        } else {
+          navigate('/');
+        }
+      } else {
+        navigate('/');
+      }
+    } catch (error) {
+      console.error('Error fetching role:', error);
+      navigate('/');
+    }
+  };
+
+
   useEffect(() => {
     if (loginMethod === 'phone' && !confirmationResult) {
       // Re-initialize recaptcha when the container mounts
@@ -60,8 +83,8 @@ export default function Login() {
     setLoading(true);
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate('/');
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      await redirectBasedOnRole(userCredential.user.uid);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
@@ -107,8 +130,8 @@ export default function Login() {
     setError('');
     setLoading(true);
     try {
-      await confirmationResult.confirm(otp);
-      navigate('/');
+      const userCredential = await confirmationResult.confirm(otp);
+      await redirectBasedOnRole(userCredential.user.uid);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
@@ -215,6 +238,12 @@ export default function Login() {
                   {loading ? 'Signing in...' : 'Sign in'}
                 </button>
               </div>
+              <div className="mt-4 text-center text-sm text-gray-600">
+                Don't have an account?{' '}
+                <Link to="/register" className="font-medium text-indigo-600 hover:text-indigo-500">
+                  Register
+                </Link>
+              </div>
             </form>
           ) : (
             <div className="space-y-6">
@@ -279,6 +308,12 @@ export default function Login() {
                   >
                     Back
                   </button>
+                  <div className="mt-4 text-center text-sm text-gray-600">
+                    Don't have an account?{' '}
+                    <Link to="/register" className="font-medium text-indigo-600 hover:text-indigo-500">
+                      Register
+                    </Link>
+                  </div>
                 </form>
               )}
             </div>
