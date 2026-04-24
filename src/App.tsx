@@ -23,7 +23,7 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/features" element={<ClientFeatures />} />
       <Route path="/contracts" element={<ClientContracts />} />
-      <Route path="/agency-projects" element={<AgencyProjects />} />
+      <Route path="/agency/projects" element={<AgencyProjects />} />
       <Route path="/settings" element={<AgencySettings />} />
       <Route path="/dev/infrastructure" element={<DevInfrastructure />} />
       <Route path="/dev/repositories" element={<DevRepositories />} />

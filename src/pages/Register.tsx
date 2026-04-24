@@ -34,7 +34,7 @@ export default function Register() {
       if (role === 'Client') {
         navigate('/client-dashboard');
       } else {
-        navigate('/agency-projects');
+        navigate('/agency/projects');
       }
     } catch (err) {
       if (err instanceof Error) {

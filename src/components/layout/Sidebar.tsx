@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../lib/firebase';
 
 interface NavItem {
   name: string;
@@ -34,6 +36,16 @@ export default function Sidebar({
   actionButton,
 }: SidebarProps) {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/login');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
 
   return (
     <aside className="flex flex-col h-screen w-64 fixed left-0 top-0 z-40 border-r border-slate-200/50 dark:border-slate-800/50 bg-slate-50 dark:bg-slate-900 shadow-[4px_0_24px_rgba(0,0,0,0.02)] font-manrope antialiased tracking-tight hidden md:flex">
@@ -91,12 +103,26 @@ export default function Sidebar({
 
       <div className="mt-auto p-6 space-y-1 border-t border-slate-100 dark:border-slate-800/50 bg-slate-50/50 dark:bg-slate-900/50">
         <nav className="space-y-1">
-          {bottomNavItems.map(item => (
-            <Link key={item.name} to={item.path} className={`flex items-center gap-3 px-4 py-2 rounded-lg text-sm transition-colors ${item.name === 'Logout' ? 'text-slate-500 hover:text-error' : 'text-slate-500 hover:text-slate-900'}`}>
-              <span className="material-symbols-outlined text-[20px]">{item.icon}</span>
-              <span>{item.name}</span>
-            </Link>
-          ))}
+          {bottomNavItems.map(item => {
+            if (item.name === 'Logout') {
+              return (
+                <button
+                  key={item.name}
+                  onClick={handleLogout}
+                  className="w-full flex items-center gap-3 px-4 py-2 rounded-lg text-sm transition-colors text-slate-500 hover:text-red-500 text-left"
+                >
+                  <span className="material-symbols-outlined text-[20px]">{item.icon}</span>
+                  <span>{item.name}</span>
+                </button>
+              );
+            }
+            return (
+              <Link key={item.name} to={item.path} className="flex items-center gap-3 px-4 py-2 rounded-lg text-sm transition-colors text-slate-500 hover:text-slate-900">
+                <span className="material-symbols-outlined text-[20px]">{item.icon}</span>
+                <span>{item.name}</span>
+              </Link>
+            );
+          })}
         </nav>
       </div>
     </aside>
