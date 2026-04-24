@@ -43,7 +43,7 @@ export default function Login() {
         if (userRole === 'Client') {
           navigate('/client-dashboard');
         } else if (userRole === 'Agency') {
-          navigate('/agency-projects');
+          navigate('/agency/projects');
         } else {
           navigate('/');
         }

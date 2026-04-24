@@ -28,7 +28,7 @@ export default function Layout({ children }: LayoutProps) {
     subtitle: 'Client Portal',
     icon: 'a',
     navItems: [
-      { name: 'Dashboard', icon: 'dashboard', path: '/' },
+      { name: 'Dashboard', icon: 'dashboard', path: '/client-dashboard' },
       { name: 'Projects', icon: 'account_tree', path: '/agency/projects' },
       { name: 'Contracts', icon: 'description', path: '/contracts' },
       { name: 'Features', icon: 'fact_check', path: '/features' },
@@ -65,7 +65,7 @@ export default function Layout({ children }: LayoutProps) {
       subtitle: 'Agency Portal',
       icon: <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>architecture</span>,
       navItems: [
-        { name: 'Dashboard', icon: 'dashboard', path: '/' },
+        { name: 'Dashboard', icon: 'dashboard', path: '/agency/projects' },
         { name: 'Projects', icon: 'folder_open', path: '/agency/projects' },
         { name: 'Team', icon: 'group', path: '/team' },
         { name: 'Invoices', icon: 'receipt_long', path: '/invoices' },
