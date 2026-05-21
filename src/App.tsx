@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import ClientDashboard from './pages/ClientDashboard';
 import ClientFeatures from './pages/ClientFeatures';
 import ClientContracts from './pages/ClientContracts';
@@ -8,6 +8,8 @@ import DevInfrastructure from './pages/DevInfrastructure';
 import DevRepositories from './pages/DevRepositories';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import LandingPage from './pages/LandingPage';
+import DemoDashboard from './pages/DemoDashboard';
 
 function App() {
   return (
@@ -17,7 +19,8 @@ function App() {
         but typically Agency, Client, and Dev portals might have different layouts.
         We will manage layout differences via props or separate layouts later.
       */}
-      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/demo" element={<DemoDashboard />} />
       <Route path="/client-dashboard" element={<ClientDashboard />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
