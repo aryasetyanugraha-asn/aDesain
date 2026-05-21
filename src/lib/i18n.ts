@@ -7,10 +7,11 @@ const resources = {
   en: {
     translation: {
       hero: {
-        title: "Innovating the Digital Future with aDesain",
-        subtitle: "We are a trusted agency with experience since 2007. We craft apps, AI solutions, media, and more for governments, international corporations, and SMEs.",
-        cta1: "Try Demo Dashboard",
-        cta2: "Contact Us"
+        title: "Shaping tomorrow\nwith vision and action.",
+        subtitle: "We back visionaries and craft ventures that define what comes next.",
+        cta1: "Explore Now",
+        cta2: "Start a Chat",
+        tag: "Investing. Building. Advisory."
       },
       about: {
         title: "About Us",
@@ -44,10 +45,11 @@ const resources = {
   id: {
     translation: {
       hero: {
-        title: "Menginovasi Masa Depan Digital bersama aDesain",
-        subtitle: "Kami adalah agensi terpercaya dengan pengalaman sejak 2007. Kami membuat aplikasi, solusi AI, media, dan banyak lagi untuk pemerintah, perusahaan internasional, dan UMKM.",
-        cta1: "Coba Demo Dashboard",
-        cta2: "Hubungi Kami"
+        title: "Membentuk masa depan\ndengan visi dan aksi.",
+        subtitle: "Kami mendukung visioner dan menciptakan ventura yang menentukan apa yang akan datang selanjutnya.",
+        cta1: "Jelajahi Sekarang",
+        cta2: "Mulai Percakapan",
+        tag: "Investasi. Membangun. Penasihat."
       },
       about: {
         title: "Tentang Kami",
@@ -81,10 +83,11 @@ const resources = {
   ar: {
     translation: {
       hero: {
-        title: "ابتكار المستقبل الرقمي مع aDesain",
-        subtitle: "نحن وكالة موثوقة بخبرة تمتد منذ عام 2007. نصنع التطبيقات، حلول الذكاء الاصطناعي، الوسائط، والمزيد للحكومات، الشركات الدولية، والشركات الصغيرة والمتوسطة.",
-        cta1: "جرب لوحة التحكم التجريبية",
-        cta2: "اتصل بنا"
+        title: "صياغة الغد\nبرؤية وعمل.",
+        subtitle: "نحن ندعم أصحاب الرؤى ونصنع المشاريع التي تحدد ما سيأتي بعد ذلك.",
+        cta1: "استكشف الآن",
+        cta2: "ابدأ محادثة",
+        tag: "الاستثمار. البناء. الاستشارات."
       },
       about: {
         title: "معلومات عنا",
