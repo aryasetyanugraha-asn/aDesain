@@ -61,7 +61,8 @@ export default {
         "body": ["Inter", "sans-serif"],
         "label": ["Inter", "sans-serif"],
         "manrope": ["Manrope", "sans-serif"],
-        "inter": ["Inter", "sans-serif"]
+        "inter": ["Inter", "sans-serif"],
+        "sans": ["Inter", "sans-serif"]
       },
       borderRadius: {
         "DEFAULT": "0.125rem",
